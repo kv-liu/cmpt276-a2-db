@@ -1,10 +1,16 @@
 package com.example;
 
 public class Input {
+    private int id;
     private String name;
     private int width;
     private int height;
     private String color;
+
+    //getters
+    public int getId() {
+        return this.id;
+    }
 
     public String getName() {
         return this.name;
@@ -20,6 +26,11 @@ public class Input {
 
     public String getColor() {
         return this.color;
+    }
+
+    //setters
+    public void setId(int i) {
+        this.id = i;
     }
 
     public void setName(String n) {

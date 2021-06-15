@@ -1,15 +1,36 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'db')}">
+<!-- <html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'db')}"> -->
+<head>
+  <link rel="stylesheet" href="/stylesheets/main.css"/>
+  <link rel="stylesheet" href="/src/main/resources/public/stylesheets/main.css">
+</head>
 
-<body>
-
-
-<div class="container">
-  <h1>Database Output</h1>
-  <ul th:each="record : ${records}">
-    <li th:text="${record}"/>
-  </ul>
-</div>
+<body style="text-align:center; background-color:#001f3f; font-family: Calibri, 'Trebuchet MS', sans-serif; color: #EED8E4;">
+  <header class="index-nav">
+    <li><a th:href="@{/}">Home</a></li>
+    <li><a th:href="@{/input}">Add Rectangle</a></li>
+    <li><a th:href="@{/db}">Rectangle Cart</a></li>
+  </header>
+  <h1 style="text-align: center; font-size: 50px;">My Rectangles</h1>
+  <table class="db-table" style="width:auto; text-align: center;">
+    <tr style="font-weight: bolder;">
+      <th>Name</th>
+      <th>Color</th>
+    </tr>
+    <tr th:each="input: ${inputs}">
+      <td>
+        <form action="#" method="post" th:action="@{/db/info/${input.name}}" th:object="${input}">
+          <a th:href="@{/db/info(name=${input.name})}"><p style="color: #EED8E4;" th:text="${input.name}"></p></a>
+        </form>
+      </td>
+      <td><p  th:text="${input.color}"></p></td>
+      <!-- <td>
+        <form action="#" method="post" th:action="@{/db/delete/{name}}" th:object=${input}>
+          <input type="submit" value="Delete">
+        </form>
+      </td> -->
+    </tr>
+  </table>
 
 </body>
 </html>

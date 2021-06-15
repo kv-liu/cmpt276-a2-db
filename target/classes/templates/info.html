@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/main.css"/>
+    <link rel="stylesheet" href="/src/main/resources/public/stylesheets/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <title>Rectangle Info</title>
+</head>
+<body style="text-align:center; background-color:#001f3f; font-family: Calibri, 'Trebuchet MS', sans-serif; color: #EED8E4;">
+    <header class="index-nav">
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/input}">Add Rectangle</a></li>
+        <li><a th:href="@{/db}">Rectangle Cart</a></li>
+    </header>
+    <p>FOR TESTING: THIS IS DB/INFO/{NAME}</p>
+    <p>Rectangle Attributes for: </p>
+    <p th:text="${inputName}"></p>
+
+    <table class="db-table" style="width:auto; text-align: center;">
+        <tr style="font-weight: bolder;">
+          <th>Name</th>
+          <th>Color</th>
+          <th>Width</th>
+          <th>Height</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+        <tr>
+          <td><p style="color: #EED8E4;" th:text="${inputName}"></p></td>
+          <td><p style="color: #EED8E4;" th:text="${inputColor}"></p></td>
+          <td><p style="color: #EED8E4;" th:text="${inputWidth}"></p></td>
+          <td><p style="color: #EED8E4;" th:text="${inputHeight}"></p></td>
+          <td>
+            <form action="#" method="post" th:action="@{/db/info/update/${inputObj.name}}" th:object="${inputObj}">
+                <a th:href="@{/db/info/update(name=${inputObj.name})}"><i style="color: #EED8E4" class="fa fa-cog"></i></a>
+            </form>
+            </td>
+          <td>
+            <form action="#" method="post" th:action="@{/db/info/delete/${inputObj.name}}" th:object="${inputObj}">
+                <a th:href="@{/db/info/delete(name=${inputObj.name})}"><i style="color: #EED8E4" class="fa fa-trash"></i></a>
+              <!-- <input type="submit" value="Delete"> -->
+            </form>
+          </td>
+        </tr>
+      </table>
+    
+      <!-- <div style="width:500px;height:100px;border:1px solid Orange;"></div> -->
+</body>
+</html>
+
+<!-- <form action="#" method="post" th:action="@{/db/info/${input.name}}" th:object="${input}">
+    <a th:href="@{/db/info(name=${input.name})}"><p style="color: #EED8E4;" th:text="${input.name}"></p></a>
+  </form> -->

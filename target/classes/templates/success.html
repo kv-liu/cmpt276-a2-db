@@ -4,9 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/main.css"/>
+    <link rel="stylesheet" href="/src/main/resources/public/stylesheets/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
 </head>
-<body>
-    Rectangle Added Successfully!
+<body style="text-align: center; background-color:#001f3f; font-family: Calibri, 'Trebuchet MS', sans-serif; color: #EED8E4;">
+    <header class="index-nav">
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/input}">Add Rectangle</a></li>
+        <li><a th:href="@{/db}">Rectangle Cart</a></li>
+    </header>
+    <h1 style="margin-top: 150px;">Rectangle Added Successfully!</h1>
+    <div style="margin-top: 250px;">
+        <div style="display: inline-block; margin-right: 150px;">
+            <p style="font-size: larger; font-weight: bolder;">Add Another Rectangle</p>
+            <a th:href="@{/input}"><i style="color: #EED8E4; font-size: 200px;" class="fa fa-plus-square"></i></a>
+    
+        </div>
+        <div style="display: inline-block; margin-left: 150px;">
+            <p style="font-size: larger; font-weight: bolder;">View Rectangle Cart</p>
+            <a th:href="@{/db}"><i style="color: #EED8E4; font-size: 200px;" class="fa fa-shopping-cart"></i></a>
+        </div>
+    </div>
+
+
 </body>
 </html>

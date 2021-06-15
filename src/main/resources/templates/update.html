@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/main.css"/>
+    <link rel="stylesheet" href="/src/main/resources/public/stylesheets/main.css">
+    <title>Update Page</title>
+</head>
+<body class="input-main" style="background-color:#001f3f; font-family: Calibri, 'Trebuchet MS', sans-serif; color:#EED8E4">
+    <header class="index-nav">
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/input}">Add Rectangle</a></li>
+        <li><a th:href="@{/db}">Rectangle Cart</a></li>
+    </header>
+    <form class="input-form" action="#" method="post" th:action="@{/update}" th:object="${inputObjUpdate}">
+        <p style="font-weight: bolder; font-size: 20px;">Enter NEW rectangle attributes for the rectangle named:</p>
+        <p th:text="${inputObjUpdate.name}"></p>
+        <input type="hidden" required=1 th:field=*{name} placeholder="Rectangle name"> <br>
+        <input type="number" min=0 required=1 th:field=*{width} placeholder="Rectangle width"> <br>
+        <input type="number" min=0 required=1 th:field=*{height} placeholder="Rectangle height"> <br>
+        <input type="text" required=1 th:field=*{color} placeholder="Rectangle color"> <br>
+        <input style="background-color: #EED8E4" type="submit" value="Update Rectangle">
+    </form>
+</body>
+</html>

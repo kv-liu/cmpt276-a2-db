@@ -1,27 +1,74 @@
-.jumbotron {
-  background: #532F8C;
-  color: white;
-  padding-bottom: 80px; }
-  .jumbotron .btn-primary {
-    background: #845ac7;
-    border-color: #845ac7; }
-    .jumbotron .btn-primary:hover {
-      background: #7646c1; }
-  .jumbotron p {
-    color: #d9ccee;
-    max-width: 75%;
-    margin: 1em auto 2em; }
-  .navbar + .jumbotron {
-    margin-top: -20px; }
-  .jumbotron .lang-logo {
-    display: block;
-    background: #B01302;
-    border-radius: 50%;
-    overflow: hidden;
-    width: 100px;
-    height: 100px;
-    margin: auto;
-    border: 2px solid white; }
-    .jumbotron .lang-logo img {
-      max-width: 100%; }
+.index-main {
+  text-align: center;
+  
+}
 
+.input-main {
+  text-align: center;
+}
+
+.input-form {
+  margin: auto 0;
+  margin-top: 10%;
+}
+
+.input-form input {
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px;
+  border: none;
+}
+.db-table {
+  border-collapse: collapse;
+}
+
+table, td, th {
+  border: 1px solid #EED8E4;
+  padding: 10px;
+}
+
+table {
+  overflow: hidden;
+  overflow-y:scroll;
+  height:80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.index-nav {
+  overflow: hidden;
+  font-family: Calibri;
+  font-weight: bolder;
+  margin-top: 20px;
+  align-items: center;
+
+}
+
+.index-nav a {
+  color: #EED8E4;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  opacity: 0.5;
+}
+
+.index-nav a:hover {
+  opacity: 100%;
+  color: white;
+}
+
+.index-nav li.active a:hover {
+  color: black;
+}
+
+.index-nav li {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.index-nav li:hover {
+  opacity: 100%;
+}
