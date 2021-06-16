@@ -5,8 +5,8 @@ public class Input {
     private String name;
     private int width;
     private int height;
+    private int radius;
     private String color;
-
     //getters
     public int getId() {
         return this.id;
@@ -22,6 +22,10 @@ public class Input {
 
     public int getHeight() {
         return this.height;
+    }
+
+    public int getRadius() {
+        return this.radius;
     }
 
     public String getColor() {
@@ -43,6 +47,10 @@ public class Input {
 
     public void setHeight(int h) {
         this.height = h;
+    }
+
+    public void setRadius(int r) {
+        this.radius = r;
     }
 
     public void setColor(String c) {

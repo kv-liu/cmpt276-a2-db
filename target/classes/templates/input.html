@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/main.css"/>
-    <link rel="stylesheet" href="/src/main/resources/public/stylesheets/main.css">
+    <!-- <link rel="stylesheet" href="/src/main/resources/public/stylesheets/main.css"> -->
     <title>New Rectangle Form</title>
 </head>
 <body class="input-main" style="background-color:#001f3f; font-family: Calibri, 'Trebuchet MS', sans-serif; color:#EED8E4">
@@ -14,13 +14,20 @@
         <li><a th:href="@{/input}">Add Rectangle</a></li>
         <li><a th:href="@{/db}">Rectangle Cart</a></li>
     </header>
-    <form class="input-form" action="#" method="post" th:action="@{/input}" th:object="${input}"> <!--action: goes to path /input by post method object: from getMapping-->
-        <p style="font-weight: bolder; font-size: 20px;">Enter rectangle attributes:</p>
+    <form style="text-align: center;" class="input-form" action="#" method="post" th:action="@{/input}" th:object="${input}"> <!--action: goes to path /input by post method object: from getMapping-->
+        <p style="font-weight: bolder; font-size: 20px;">Enter NEW rectangle attributes:</p>
+        <p>(Sizes in px)</p>
+        Name:<br>
         <input type="text" required=1 th:field=*{name} placeholder="Rectangle name"> <br>
-        <input type="number" min=0 required=1 th:field=*{width} placeholder="Rectangle width"> <br>
-        <input type="number" min=0 required=1 th:field=*{height} placeholder="Rectangle height"> <br>
-        <input type="text" required=1 th:field=*{color} placeholder="Rectangle color"> <br>
-        <input style="background-color: #EED8E4" type="submit" value="Add Rectangle">
+        Width:<br>
+        <input type="number" min=50 required=1 th:field=*{width} placeholder="Rectangle width"> <br>
+        Height:<br>
+        <input type="number" min=50 required=1 th:field=*{height} placeholder="Rectangle height"> <br>
+        Radius:<br>
+        <input type="number" min=0 required=1 th:field=*{radius} placeholder="Rectangle radius"><br>
+        Color:<br>
+        <input type="color" required=1 th:field=*{color} placeholder="Rectangle color"> <br>
+        <input style="background-color: #EED8E4;" type="submit" value="Add Rectangle">
     </form>
 </body>
 </html>

@@ -69,9 +69,6 @@ public class Main {
     return "input";
   }
 
-
-
-
   @PostMapping(  //when server hears post request from /input path
     path = "/input",
     consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE}
@@ -79,8 +76,8 @@ public class Main {
   public String handleInputSubmit(Map<String, Object> model, Input input) throws Exception {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
-      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangle (id serial, name varchar(30), width int, height int, color varchar(30))");
-      String sql = "INSERT INTO rectangle (name, width, height, color) VALUES ('" + input.getName() + "','" + input.getWidth() + "' ,'" + input.getHeight() + "','" + input.getColor() + "')";
+      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangle (id serial, name varchar(30), width int, height int, radius int, color varchar(30))");
+      String sql = "INSERT INTO rectangle (name, width, height, radius, color) VALUES ('" + input.getName() + "','" + input.getWidth() + "' ,'" + input.getHeight() + "','" + input.getRadius() + "','" + input.getColor() + "')";
       ResultSet rs = stmt.executeQuery("SELECT * FROM rectangle");
       ArrayList<String> output = new ArrayList<String>();
 
@@ -94,9 +91,8 @@ public class Main {
         return "error";
       }
     
-      System.out.println("Input: " + input);
-      System.out.println(input.getName() + " " + input.getWidth() + " " + input.getHeight() + " " + input.getColor());
-      System.out.println("postM input Model: " + model);
+      // System.out.println("Input: " + input);
+      // System.out.println(input.getName() + " " + input.getWidth() + " " + input.getHeight() + " " + input.getColor());
 
       return "redirect:/input/success";
     } catch (Exception e) {
@@ -110,18 +106,16 @@ public class Main {
     return "success";
   }
 
-
-
   @GetMapping(
     path = "/db/info/delete"
   )
   public String handleInputDel(Map<String, Object> model, @RequestParam String name) throws Exception {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
-      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangle (id serial, name varchar(20), width varint(20), height varint(20), color varchar(20))");
+      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangle (id serial, name varchar(30), width int, height int, radius int, color varchar(30))");
       String sql = "DELETE FROM rectangle " + "WHERE (name='" + name + "')";
       stmt.executeUpdate(sql);
-      System.out.println("(DELETION) GET Input Name: " + name);
+      // System.out.println("(DELETION) GET Input Name: " + name);
       return "redirect:/db/info/deleted";
     } catch (Exception e) {
       model.put("message", e.getMessage());
@@ -145,14 +139,14 @@ public class Main {
 
       while (!rs.next()) {
         rs.getString("color");
-        rs.getInt("Width");
-        rs.getInt("Height");
+        rs.getInt("width");
+        rs.getInt("height");
+        rs.getInt("radius");
       }
       output.setName(rs.getString("name"));
 
       model.put("inputObjUpdate", output);
 
-      System.out.println("WE NEED THIS VAL:" + name);
       return "update";
 
     } catch (Exception e) {
@@ -160,34 +154,19 @@ public class Main {
       return "error";
     }
   }
-
-  //this goes to update
-  // @GetMapping (
-  //   path ="db/info/update"
-  // )
-  // public String getUpdateForm(Map<String, Object> model) {
-  //   Input input = new Input(); //passed input into /input
-  //   model.put("input", input);
-  //   return "update";
-  // }
-
   
-
-
   @PostMapping(
     path = "/update"
   )
   public String handleInputUpdate(Map<String, Object> model, @RequestParam String name, Input input) throws Exception {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
-      System.out.println("Made it to POSTMAPPING /UPDATE");
-      System.out.println(input.getName() + " " + input.getWidth() + " " + input.getHeight() + " " + input.getColor());
-      System.out.println(name);
-      System.out.println("UPDATE rectangle SET name ='" + input.getName() + "', width ='"+ input.getWidth() +"', height ='"+ input.getHeight() +"', color ='"+ input.getColor() +"' WHERE (name='" + name + "')");
-      String sql = "UPDATE rectangle SET width ='"+ input.getWidth() +"', height ='"+ input.getHeight() +"', color ='"+ input.getColor() +"' WHERE (name='" + name + "')";
+      // System.out.println(input.getName() + " " + input.getWidth() + " " + input.getHeight() + " " + input.getColor());
+      // System.out.println(name);
+      // System.out.println("UPDATE rectangle SET name ='" + input.getName() + "', width ='"+ input.getWidth() +"', height ='"+ input.getHeight() +"', radius ='"+ input.getRadius() +"', color ='"+ input.getColor() +"' WHERE (name='" + name + "')");
+      String sql = "UPDATE rectangle SET width ='"+ input.getWidth() +"', height ='"+ input.getHeight() +"', radius ='"+ input.getRadius() +"', color ='"+ input.getColor() +"' WHERE (name='" + name + "')";
       // name ='" + input.getName() + "', 
       stmt.executeUpdate(sql);
-      System.out.println("made to end?");
       return "redirect:/update/success";
     } catch (Exception e) {
       model.put("message", e.getMessage());
@@ -200,33 +179,30 @@ public class Main {
     return "updateSuccess";
   }
   
-
-
-  //new
   @GetMapping("db/info")
   public String getInputName(Map<String, Object> model, @RequestParam String name) {
     try (Connection connection = dataSource.getConnection()) {
     Statement stmt = connection.createStatement();
-    System.out.println("GET Input Name: " + name);
     ResultSet rs = stmt.executeQuery("SELECT * FROM rectangle " + "WHERE (name='"+name+"')");
     Input output = new Input();
 
     while (!rs.next()) {
       rs.getString("color");
-      rs.getInt("Width");
-      rs.getInt("Height");
+      rs.getInt("width");
+      rs.getInt("height");
+      rs.getInt("radius");
     }
     output.setName(rs.getString("name"));
-    System.out.println("GET. color : " + rs.getString("color"));
-    System.out.println("GET. width : " + rs.getInt("Width"));
-    System.out.println("GET. height : " + rs.getInt("Height"));
-
-    System.out.println("GET. Obj NAME : " + output.getName());
+    // System.out.println("GET. color : " + rs.getString("color"));
+    // System.out.println("GET. width : " + rs.getInt("width"));
+    // System.out.println("GET. height : " + rs.getInt("height"));
+    // System.out.println("GET. Obj NAME : " + output.getName());
     
     model.put("inputName", name);
     model.put("inputColor", rs.getString("color"));
-    model.put("inputWidth", rs.getInt("Width"));
-    model.put("inputHeight", rs.getInt("Height"));
+    model.put("inputWidth", rs.getInt("width"));
+    model.put("inputHeight", rs.getInt("height"));
+    model.put("inputRadius", rs.getInt("radius"));
     model.put("inputObj", output);
 
     return "info";
@@ -235,8 +211,6 @@ public class Main {
       return "error";
     }
   }
-
-
 
   @RequestMapping("/db")
   String db(Map<String, Object> model) {
@@ -252,8 +226,8 @@ public class Main {
         temp.setName(rs.getString("name"));
         temp.setColor(rs.getString("color"));
         output.add(temp);
-        System.out.println("Result set name: " + rs.getString("name"));
-        System.out.println("Result set color: " + rs.getString("color"));
+        // System.out.println("Result set name: " + rs.getString("name"));
+        // System.out.println("Result set color: " + rs.getString("color"));
       }
       model.put("inputs", output);
       return "db";
@@ -262,7 +236,6 @@ public class Main {
       return "error";
     }
   }
-
 
 
   @Bean
