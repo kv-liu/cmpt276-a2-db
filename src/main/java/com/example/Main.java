@@ -89,7 +89,7 @@ public class Main {
         stmt.executeUpdate(sql);
       } else {
         System.out.println("Input NOT ADDED...");
-        return "success"; //put error back
+        return "error";
       }
     
       // System.out.println("Input: " + input);
@@ -209,7 +209,7 @@ public class Main {
     return "info";
     } catch (Exception e) {
       model.put("message", e.getMessage());
-      return "index"; //put error back
+      return "index"; //put error back <-- heroku clicking on db name to go to info causing error
     }
   }
 
@@ -234,7 +234,7 @@ public class Main {
       return "db";
     } catch (Exception e) {
       model.put("message", e.getMessage());
-      return "error";
+      return "success"; //put error back
     }
   }
 
