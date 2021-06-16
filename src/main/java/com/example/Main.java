@@ -89,7 +89,7 @@ public class Main {
         stmt.executeUpdate(sql);
       } else {
         System.out.println("Input NOT ADDED...");
-        return "error";
+        return "success"; //put error back
       }
     
       // System.out.println("Input: " + input);
@@ -209,7 +209,7 @@ public class Main {
     return "info";
     } catch (Exception e) {
       model.put("message", e.getMessage());
-      return "error";
+      return "index"; //put error back
     }
   }
 
