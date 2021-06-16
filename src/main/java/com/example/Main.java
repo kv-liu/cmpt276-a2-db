@@ -152,7 +152,7 @@ public class Main {
 
     } catch (Exception e) {
       model.put("message", e.getMessage());
-      return "error";
+      return "success"; //put error back
     }
   }
   
@@ -171,7 +171,7 @@ public class Main {
       return "redirect:/update/success";
     } catch (Exception e) {
       model.put("message", e.getMessage());
-      return "error";
+      return "index"; //put error back
     }
   }
 
@@ -209,7 +209,7 @@ public class Main {
     return "info";
     } catch (Exception e) {
       model.put("message", e.getMessage());
-      return "index"; //put error back <-- heroku clicking on db name to go to info causing error
+      return "error"; //put error back <-- heroku clicking on db name to go to info causing error (causing error currently)
     }
   }
 
@@ -234,7 +234,7 @@ public class Main {
       return "db";
     } catch (Exception e) {
       model.put("message", e.getMessage());
-      return "success"; //put error back
+      return "error"; //works
     }
   }
 
