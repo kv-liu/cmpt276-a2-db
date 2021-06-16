@@ -77,6 +77,7 @@ public class Main {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangle (id serial, name varchar(30), width int, height int, radius int, color varchar(30))");
+      // System.out.println("INSERT INTO rectangle (name, width, height, radius, color) VALUES ('" + input.getName() + "','" + input.getWidth() + "' ,'" + input.getHeight() + "','" + input.getRadius() + "','" + input.getColor() + "')");
       String sql = "INSERT INTO rectangle (name, width, height, radius, color) VALUES ('" + input.getName() + "','" + input.getWidth() + "' ,'" + input.getHeight() + "','" + input.getRadius() + "','" + input.getColor() + "')";
       ResultSet rs = stmt.executeQuery("SELECT * FROM rectangle");
       ArrayList<String> output = new ArrayList<String>();
