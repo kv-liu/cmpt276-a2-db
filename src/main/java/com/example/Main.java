@@ -89,16 +89,16 @@ public class Main {
         stmt.executeUpdate(sql);
       } else {
         System.out.println("Input NOT ADDED...");
-        return "error";
+        return "index";//put error back
       }
     
       // System.out.println("Input: " + input);
       // System.out.println(input.getName() + " " + input.getWidth() + " " + input.getHeight() + " " + input.getColor());
 
-      return "redirect:/input/success";
+      return "redirect:/input/success"; //after submitting add new rectangle button
     } catch (Exception e) {
       model.put("message", e.getMessage());
-      return "index"; //put error back
+      return "error"; //works
     }
   }
 
@@ -206,7 +206,7 @@ public class Main {
     model.put("inputRadius", rs.getInt("radius"));
     model.put("inputObj", output);
 
-    return "info";
+    return "info"; //goes to detailed info page
     } catch (Exception e) {
       model.put("message", e.getMessage());
       return "error"; //put error back <-- heroku clicking on db name to go to info causing error (causing error currently)
