@@ -92,8 +92,8 @@ public class Main {
         return "error";
       }
     
-      System.out.println("Input: " + input);
-      System.out.println(input.getName() + " " + input.getWidth() + " " + input.getHeight() + " " + input.getColor());
+      // System.out.println("Input: " + input);
+      // System.out.println(input.getName() + " " + input.getWidth() + " " + input.getHeight() + " " + input.getColor());
 
       return "redirect:/input/success"; //after submitting add new rectangle button
     } catch (Exception e) {
@@ -209,7 +209,7 @@ public class Main {
     return "info"; //goes to detailed info page
     } catch (Exception e) {
       model.put("message", e.getMessage());
-      return "error"; //put error back <-- heroku clicking on db name to go to info causing error (causing error currently)
+      return "error";
     }
   }
 
