@@ -79,7 +79,7 @@ public class Main {
   public String handleInputSubmit(Map<String, Object> model, Input input) throws Exception {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
-      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangle (id serial, name varchar(30), width int, height int, color varchar(30)");
+      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS rectangle (id serial, name varchar(30), width int, height int, color varchar(30))");
       String sql = "INSERT INTO rectangle (name, width, height, color) VALUES ('" + input.getName() + "','" + input.getWidth() + "' ,'" + input.getHeight() + "','" + input.getColor() + "')";
       ResultSet rs = stmt.executeQuery("SELECT * FROM rectangle");
       ArrayList<String> output = new ArrayList<String>();
