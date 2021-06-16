@@ -98,7 +98,7 @@ public class Main {
       return "redirect:/input/success";
     } catch (Exception e) {
       model.put("message", e.getMessage());
-      return "error";
+      return "index"; //put error back
     }
   }
 
@@ -120,7 +120,7 @@ public class Main {
       return "redirect:/db/info/deleted";
     } catch (Exception e) {
       model.put("message", e.getMessage());
-      return "error";
+      return "error"; //works
     }
   }
 
@@ -152,7 +152,7 @@ public class Main {
 
     } catch (Exception e) {
       model.put("message", e.getMessage());
-      return "success"; //put error back
+      return "error"; //works
     }
   }
   
@@ -171,7 +171,7 @@ public class Main {
       return "redirect:/update/success";
     } catch (Exception e) {
       model.put("message", e.getMessage());
-      return "index"; //put error back
+      return "error"; //works
     }
   }
 
