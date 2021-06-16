@@ -89,16 +89,16 @@ public class Main {
         stmt.executeUpdate(sql);
       } else {
         System.out.println("Input NOT ADDED...");
-        return "index";//put error back
+        return "error";
       }
     
-      // System.out.println("Input: " + input);
-      // System.out.println(input.getName() + " " + input.getWidth() + " " + input.getHeight() + " " + input.getColor());
+      System.out.println("Input: " + input);
+      System.out.println(input.getName() + " " + input.getWidth() + " " + input.getHeight() + " " + input.getColor());
 
       return "redirect:/input/success"; //after submitting add new rectangle button
     } catch (Exception e) {
       model.put("message", e.getMessage());
-      return "error"; //works
+      return "error"; // adding rectangle leads here
     }
   }
 
